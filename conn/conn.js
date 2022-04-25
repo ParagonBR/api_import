@@ -1,11 +1,16 @@
 import mariadb from 'mariadb'
+import env from 'dotenv'
 
-const pool = mariadb.createPool({
-    host: '10.0.150.9',
-    user: 'root',
-    password: 'michele1',
+env.config()
+
+export default function  pool(){
+  
+  return mariadb.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PWD,
     database: 'BO_Ativo',
     idleTimeout : 10,
-
+    connectionLimit: 5 
   });
-export default pool
+}

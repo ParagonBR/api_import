@@ -1,10 +1,14 @@
-import pool from '../conn/conn'
+import Pool from '../conn/conn'
 
-export default async function json_to_db(json,consulta) {
+const pool = Pool()
+
+export default async function json_to_db(json, consulta) {
+    const conn = await pool.getConnection()
+
     try {
         let linhas = 0
+
         for (let param of json) {
-            const conn = await pool.getConnection()
             try {
                 let resposta = await conn.query(consulta, Object.values(param))
                 await conn.end()
@@ -13,11 +17,20 @@ export default async function json_to_db(json,consulta) {
             } catch (error) {
                 await conn.end()
                 if (conn) await conn.release()
-                console.log(error) 
+                throw error.text
+            } finally {
+                if (conn){
+                    await conn.release()
+                    await conn.end()
+                }           
             }
         }
         return linhas
     } catch (error) {
-        console.trace(error)
+        if (conn){
+            await conn.release()
+            await conn.end()
+        } 
+        throw error
     }
 }
