@@ -5,6 +5,7 @@ const pool = mariadb.createPool({
     user: 'root',
     password: 'michele1',
     database: 'BO_Ativo',
-    idleTimeout : 10
+    idleTimeout : 10,
+
   });
 export default pool

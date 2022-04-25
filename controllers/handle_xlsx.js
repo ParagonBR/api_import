@@ -5,9 +5,7 @@ export default async function handle_xlsx(arquivo)
 {
     var conteudo;
     var workbook = XLSX.readFile(arquivo);
-        console.log(workbook);
         let planilha = workbook.SheetNames[0]
-        console.log(planilha);
         conteudo = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[planilha]);
         conteudo.forEach(param => {
             param['DATA SOLICITAÇÃO'] = ExcelDateToDB(param['DATA SOLICITAÇÃO'])
