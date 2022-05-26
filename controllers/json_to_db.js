@@ -4,7 +4,6 @@ const pool = Pool()
 
 export default async function json_to_db(json, consulta) {
     const conn = await pool.getConnection()
-
     try {
         let linhas = 0
 

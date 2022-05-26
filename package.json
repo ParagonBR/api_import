@@ -5,12 +5,14 @@
   "scripts": {
     "dev": "next dev --port 8000",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "start": "next start --port 8000",
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
+    "forever-monitor": "^3.0.3",
     "mariadb": "^3.0.0",
     "multiparty": "^4.2.3",
     "next": "12.1.5",

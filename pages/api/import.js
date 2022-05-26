@@ -1,6 +1,7 @@
-import pool from '../../conn/conn'
+import Pool from '../../conn/conn'
 import Cors from 'cors'
 import initMiddleware from '../../lib/init-middleware'
+const pool = Pool()
 const cors = initMiddleware(
     Cors({
       methods: ['GET','POST'],

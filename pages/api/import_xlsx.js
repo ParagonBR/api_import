@@ -44,7 +44,7 @@ handler.post(async (req, res) => {
             throw "Arquivo XLSX Inválido"
         }
         else{
-            let cont = await json_to_db(resposta,`insert into tb_mailing_email_teste (cpf_cnpj,
+            let cont = await json_to_db(resposta,`insert into tb_mailing_email (cpf_cnpj,
                 custcode,
                 data_solicatao,
                 email,
