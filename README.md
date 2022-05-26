@@ -1,1 +1,1 @@
-## Trasnforma JSON em planilha XLSX, jsnon pode ter até 1MB
+## Transforma JSON em planilha XLSX, JSON pode ter até 1MB
